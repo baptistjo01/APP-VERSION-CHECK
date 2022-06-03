@@ -1,5 +1,5 @@
+import 'package:app_version_check/app_version_check.dart';
 import 'package:flutter/material.dart';
-import 'package:new_version/new_version.dart';
 
 
 void main() {
@@ -52,12 +52,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+
+
   void _incrementCounter() async{
      final newVersion = NewVersion(
       iOSId: 'com.google.Vespa',
       androidId: 'com.google.android.apps.cloudconsole',
     );
-    final status = await newVersion.getVersionStatus();
+    var status = await newVersion.getVersionStatus();
+    debugPrint('status->${status!.storeVersion}');
    
     setState(() {
       // This call to setState tells the Flutter framework that something has
